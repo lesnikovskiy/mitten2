@@ -1,3 +1,7 @@
+<ActionBar title="Current Weather Condition">
+</ActionBar>
 <StackLayout *ngIf="weather">
 	<Label [text]="weather.tempC"></Label>
+	<Label [text]="weather.condition.text"></Label>
+	<Image [src]="weather.condition.icon" stretch="none"></Image>
 </StackLayout>
