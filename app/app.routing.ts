@@ -1,18 +1,11 @@
-import { NgModule } from "@angular/core";
-import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { Routes } from "@angular/router";
+import { CurrentComponent } from "./pages/current/current.component";
 
-import { ItemsComponent } from "./item/items.component";
-import { ItemDetailComponent } from "./item/item-detail.component";
-
-const routes: Routes = [
-    { path: "", redirectTo: "/items", pathMatch: "full" },
-    { path: "items", component: ItemsComponent },
-    { path: "item/:id", component: ItemDetailComponent },
+export const routes: Routes = [
+    { path: "", redirectTo: "/current", pathMatch: "full" },
+    { path: "current", component: CurrentComponent }
 ];
 
-@NgModule({
-    imports: [NativeScriptRouterModule.forRoot(routes)],
-    exports: [NativeScriptRouterModule]
-})
-export class AppRoutingModule { }
+export const navigatableComponents = [
+    CurrentComponent
+];
