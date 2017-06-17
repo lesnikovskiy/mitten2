@@ -44,7 +44,7 @@ export class HttpService {
 			.catch(this.handleErrors);
 	}
 
-	handleErrors(error: Response) {
+	private handleErrors(error: Response) {
 		console.log(JSON.stringify(error));
 
 		return Observable.throw(error);

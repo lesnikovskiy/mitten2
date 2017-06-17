@@ -1,7 +1,19 @@
 <ActionBar title="Current Weather Condition">
 </ActionBar>
-<StackLayout *ngIf="weather">
-	<Label [text]="weather.tempC"></Label>
-	<Label [text]="weather.condition.text"></Label>
-	<Image [src]="weather.condition.icon" stretch="none"></Image>
-</StackLayout>
+<TabView selectedIndex="0" (selectedIndexChange)="onIndexChanged($event)" sdkExampleTitle sdkToggleNavButto>
+	<StackLayout *tabItem="{title: 'Current'}">
+		<GridLayout rows="*, auto">
+			<StackLayout row="0" *ngIf="weather">
+				<Label [text]="weather.tempC"></Label>
+				<Label [text]="weather.condition.text"></Label>
+				<!--<Image [src]="weather.condition.icon" stretch="none"></Image>-->
+				<Image [src]="'//cdn.apixu.com/weather/64x64/night/113.png'" stretch="none"></Image>
+			</StackLayout>
+			<ActivityIndicator row="0" [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'"
+				horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
+		</GridLayout>
+	</StackLayout>
+	<StackLayout *tabItem="{title: 'Yesterday'}">
+
+	</StackLayout>
+</TabView>
