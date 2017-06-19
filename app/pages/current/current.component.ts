@@ -24,6 +24,20 @@ export class CurrentComponent implements OnInit {
 			return;
 		}
 
+		this.getCurrentWeatherCondition();
+	}
+
+	onIndexChanged(args) {
+		let tabView: TabView = args.object as TabView;
+		switch(tabView.selectedIndex) {
+			case 0:
+				this.getCurrentWeatherCondition();
+			default:
+				break;
+		}
+	}
+
+	private getCurrentWeatherCondition(): void {
 		this.isLoading = true;
 
 		getCurrentLocation({
@@ -49,10 +63,5 @@ export class CurrentComponent implements OnInit {
 				this.isLoading = false;
 			}
 		);
-	}
-
-	onIndexChanged(args) {
-		let tabView = args.object as TabView;
-        console.log("Selected index changed! New inxed: " + tabView.selectedIndex);
 	}
 }
