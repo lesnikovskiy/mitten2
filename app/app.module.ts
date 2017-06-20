@@ -12,26 +12,26 @@ import { HttpService } from "./services/http.service";
 import { routes, navigatableComponents } from "./app.routing";
 
 @NgModule({
-    bootstrap: [
-        AppComponent
-    ],
-    imports: [
-        NativeScriptModule,
-        NativeScriptFormsModule,
-        NativeScriptHttpModule,
-        NativeScriptRouterModule,
-        NativeScriptRouterModule.forRoot(routes)
-    ],
-    declarations: [
-        AppComponent,
-        CurrentComponent,
-        ...navigatableComponents
-    ],
-    providers: [
-        HttpService
-    ],
-    schemas: [
-        NO_ERRORS_SCHEMA
-    ]
+	bootstrap: [
+		AppComponent
+	],
+	imports: [
+		NativeScriptModule,
+		NativeScriptFormsModule,
+		NativeScriptHttpModule,
+		NativeScriptRouterModule,
+		NativeScriptRouterModule.forRoot(routes)
+	],
+	declarations: [
+		AppComponent,
+		CurrentComponent,
+		...navigatableComponents
+	],
+	providers: [
+		HttpService
+	],
+	schemas: [
+		NO_ERRORS_SCHEMA
+	]
 })
 export class AppModule { }

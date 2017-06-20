@@ -28,8 +28,8 @@ export class CurrentComponent implements OnInit {
 	}
 
 	onIndexChanged(args) {
-		let tabView: TabView = args.object as TabView;
-		switch(tabView.selectedIndex) {
+		const tabView: TabView = args.object as TabView;
+		switch (tabView.selectedIndex) {
 			case 0:
 				this.getCurrentWeatherCondition();
 			default:
