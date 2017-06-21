@@ -22,7 +22,6 @@ export class HttpService {
 	getCurrentWeather(lat: number, lng: number): Observable<WeatherCondition> {
 		const query: string = `${lat},${lng}`;
 		const currentUrl: string = `http://api.apixu.com/v1/current.json?key=${this.key}&q=${query}`;
-		console.log(currentUrl);
 
 		return this.http.get(currentUrl, this.options)
 			.map((res: Response) => res.json())
@@ -31,13 +30,19 @@ export class HttpService {
 				const condition = data.current.condition;
 
 				return new WeatherCondition(
+					current.last_updated,
 					current.temp_c,
 					current.temp_f,
+					current.wind_kph,
+					current.wind_dir,
+					current.pressure_mb,
+					current.humidity,
+					current.feelslike_c,
+					current.feelslike_f,
 					new Condition(
 						condition.text,
 						condition.icon,
-						condition.wind_kph,
-						condition.wind_dir,
+						condition.code
 					)
 				);
 			})
