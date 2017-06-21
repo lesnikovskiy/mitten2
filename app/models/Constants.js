@@ -1,0 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.locationX = "LOCATION_X";
+exports.locationY = "LOCATION_Y";
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ29uc3RhbnRzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiQ29uc3RhbnRzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQWEsUUFBQSxTQUFTLEdBQVcsWUFBWSxDQUFDO0FBQ2pDLFFBQUEsU0FBUyxHQUFXLFlBQVksQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBjb25zdCBsb2NhdGlvblg6IHN0cmluZyA9IFwiTE9DQVRJT05fWFwiO1xyXG5leHBvcnQgY29uc3QgbG9jYXRpb25ZOiBzdHJpbmcgPSBcIkxPQ0FUSU9OX1lcIjtcclxuIl19
