@@ -3,49 +3,49 @@
 <TabView selectedIndex="0" (selectedIndexChange)="onIndexChanged($event)" sdkExampleTitle sdkToggleNavButto>
 	<StackLayout *tabItem="{title: 'Current'}">
 		<GridLayout rows="*, auto">
-			<GridLayout row="0" columns="auto, *" *ngIf="weather">
-				<StackLayout row="0" orientation="horizontal">
-					<Label col="0" text="Last Updated:"></Label>
-					<Label col="1" [text]="weather.lastUpdated"></Label>
+			<StackLayout row="0" *ngIf="weather">
+				<StackLayout orientation="horizontal">
+					<Label text="Last Updated:"></Label>
+					<Label [text]="weather.lastUpdated"></Label>
 				</StackLayout>
 
-				<StackLayout row="1" orientation="horizontal">
-					<Label col="0" text="Temperature:"></Label>	
-					<Label col="1" [text]="weather.tempC" class="temperature"></Label>
+				<StackLayout orientation="horizontal">
+					<Label text="Temperature:"></Label>	
+					<Label [text]="weather.tempC" class="temperature"></Label>
 				</StackLayout>
 
-				<StackLayout row="2" orientation="horizontal">
-					<Label col="0" text="Condition:"></Label>
-					<Label col="1" [text]="weather.condition.text"></Label>
+				<StackLayout orientation="horizontal">
+					<Label text="Condition:"></Label>
+					<Label [text]="weather.condition.text"></Label>
 					<!--<Image [src]="weather.condition.icon" stretch="none"></Image>-->
 					<Image [src]="'//cdn.apixu.com/weather/64x64/night/113.png'" stretch="none"></Image>
 				</StackLayout>
 
-				<StackLayout row="3" orientation="horizontal">
-					<Label col="0" text="Wind (KpH):"></Label>
-					<Label col="1"  [text]="weather.windKph"></Label>
+				<StackLayout orientation="horizontal">
+					<Label row="3" col="0" text="Wind (KpH):"></Label>
+					<Label row="3" col="1"  [text]="weather.windKph"></Label>
 				</StackLayout>
 
-				<StackLayout row="4" orientation="horizontal">
-					<Label col="0" text="Wind Direction:"></Label>
-					<Label col="1"  [text]="weather.windDirection"></Label>
+				<StackLayout orientation="horizontal">
+					<Label row="4" col="0" text="Wind Direction:"></Label>
+					<Label row="4" col="1" [text]="weather.windDirection"></Label>
 				</StackLayout>
 
-				<StackLayout row="5" orientation="horizontal">
-					<Label col="0" text="Pressure:"></Label>
-					<Label col="1"  [text]="weather.pressure"></Label>
+				<StackLayout orientation="horizontal">
+					<Label row="5" col="0" text="Pressure:"></Label>
+					<Label row="5" col="1" [text]="weather.pressure"></Label>
 				</StackLayout>
 
-				<StackLayout row="6" orientation="horizontal">
-					<Label col="0" text="Humidity:"></Label>
-					<Label col="1"  [text]="weather.humidity"></Label>
+				<StackLayout orientation="horizontal">
+					<Label row="6" col="0" text="Humidity:"></Label>
+					<Label row="6" col="1" [text]="weather.humidity"></Label>
 				</StackLayout>
 
-				<StackLayout row="7" orientation="horizontal">
-					<Label col="0" text="Feels Like:"></Label>
-					<Label col="1"  [text]="weather.feelsLikeC"></Label>
+				<StackLayout orientation="horizontal">
+					<Label row="7" col="0" text="Feels Like:"></Label>
+					<Label row="7" col="1" [text]="weather.feelsLikeC"></Label>
 				</StackLayout>
-			</GridLayout>
+			</StackLayout>
 			<ActivityIndicator row="0" [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'"
 				horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
 		</GridLayout>
