@@ -8,6 +8,8 @@ import { HttpService } from "../../services/http.service";
 import { WeatherCondition } from "../../models/WeatherCondition";
 import { locationX, locationY } from "../../models/Constants";
 
+import * as moment from "moment";
+
 @Component({
 	selector: "current",
 	templateUrl: "pages/current/current.html",
@@ -34,7 +36,9 @@ export class CurrentComponent implements OnInit {
 		switch (tabView.selectedIndex) {
 			case 0:
 				this.getCurrentWeatherCondition();
+				break;
 			default:
+				this.getYesterdayWeatherCondition();
 				break;
 		}
 	}
@@ -63,28 +67,56 @@ export class CurrentComponent implements OnInit {
 					}
 				);
 			},
-			error => {
-				const lat = getNumber(locationX);
-				const lng = getNumber(locationY);
+			error => this.handleLocationError(error)
+		);
+	}
 
-				const latValid = lat > -90 || lat <= 90;
-				const lngValid = lng > -180 || lng <= 180;
+	private getYesterdayWeatherCondition() {
+		this.isLoading = true;
 
-				if (!latValid || !lngValid) {
-					alert(error);
-					return;
-				}
+		getCurrentLocation({
+			desiredAccuracy: 3,
+			updateDistance: 10,
+			maximumAge: 20000,
+			timeout: 20000
+		}).then(
+			location => {
+				const yesterday = moment().subtract(1, "days").format("YYYY-MM-DD");
 
-				this.http.getCurrentWeather(lat, lng).subscribe(
-					(w: WeatherCondition) => {
-						this.weather = w;
-						this.isLoading = false;
+				this.http.getHistoryWeather(location.latitude, location.longitude, yesterday).subscribe(
+					() => {
+						
 					},
-					e => {
-						alert(e);
+					error => {
+						alert(error);
 						this.isLoading = false;
 					}
 				);
+			},
+			error => this.handleLocationError(error)
+		);
+	}
+
+	private handleLocationError(error) {
+		const lat = getNumber(locationX);
+		const lng = getNumber(locationY);
+
+		const latValid = lat > -90 || lat <= 90;
+		const lngValid = lng > -180 || lng <= 180;
+
+		if (!latValid || !lngValid) {
+			alert(error);
+			return;
+		}
+
+		this.http.getCurrentWeather(lat, lng).subscribe(
+			(w: WeatherCondition) => {
+				this.weather = w;
+				this.isLoading = false;
+			},
+			e => {
+				alert(e);
+				this.isLoading = false;
 			}
 		);
 	}

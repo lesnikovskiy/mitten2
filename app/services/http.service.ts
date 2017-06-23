@@ -49,13 +49,24 @@ export class HttpService {
 			.catch(this.handleErrors);
 	}
 
+	getHistoryWeather(lat: number, lng: number, date: string): Observable<WeatherCondition[]> {
+		const query: string = `${lat},${lng}`;
+		const historicalUrl: string = `http://api.apixu.com/v1/history.json?key=${this.key}&q=${query}&dt=${date}`;
+
+		this.http.get(historicalUrl, this.options)
+			.map((res: Response) => res.json())
+			.map(data => {
+				// to be defined
+			})
+			.catch(this.handleErrors);
+	}
+
 	private handleErrors(error: Response) {
 		console.log(JSON.stringify(error));
 
 		return Observable.throw(error);
 	}
 }
-
 
 /*
 https://www.apixu.com/my/
