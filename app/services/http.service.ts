@@ -57,6 +57,7 @@ export class HttpService {
 			.map((res: Response) => res.json())
 			.map(data => {
 				// to be defined
+				
 			})
 			.catch(this.handleErrors);
 	}
